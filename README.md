@@ -19,7 +19,7 @@ Fall Semester 2021 - Supplementary Exercise 2
 
 * DUE: Oct 1 (Friday), 2021 11:59 PM 
 
-**GitHub Classroom Link:** TBD 
+**GitHub Classroom Link:** https://classroom.github.com/g/LXJmMx1O
 
 ## Description
 
