@@ -15,11 +15,11 @@
   * [Resources](#resources)
 
 # CS 1632 - Software Quality Assurance
-Fall Semester 2021 - Supplementary Exercise 2
+Spring Semester 2022 - Supplementary Exercise 2
 
-* DUE: Oct 1 (Friday), 2021 11:59 PM 
+* DUE: Feb 11 (Friday), 2022 11:59 PM 
 
-**GitHub Classroom Link:** https://classroom.github.com/g/LXJmMx1O
+**GitHub Classroom Link:** TBD
 
 ## Description
 
@@ -73,7 +73,7 @@ looks like a play icon, you should see your newly made run configuration.
 
 ### Running Cucumber Tests on Commandline
 
-If you are not using Eclipse and you wish to run the tests from the command line, use the command line Maven tool.  If you don't have Maven on your machine you need to [download](https://maven.apache.org/download.cgi) it and [install](https://maven.apache.org/install.html) it.  The PATH variable in the installation instructions is the same PATH we modified for setting up JDK 8 in the [Java Assessment Exercise](https://github.com/wonsunahn/CS1632_Fall2021/tree/main/exercises/0#setting-up-jdk-8-for-windows).  Once you make sure Maven works by doing `mvn -v`, do the following:
+If you are not using Eclipse and you wish to run the tests from the command line, use the command line Maven tool.  If you don't have Maven on your machine you need to [download](https://maven.apache.org/download.cgi) it and [install](https://maven.apache.org/install.html) it.  The PATH variable in the installation instructions is the same PATH we modified for setting up JDK 8 in the [Java Assessment Exercise](https://github.com/wonsunahn/CS1632_Spring2022/tree/main/exercises/0#setting-up-jdk-8-for-windows).  Once you make sure Maven works by doing `mvn -v`, do the following:
 
 1. cd into the folder where you have cloned your GitHub Classroom repository.
 2. Invoke 'mvn test':
@@ -95,7 +95,7 @@ Tests run: 14, Failures: 9, Errors: 1, Skipped: 0
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  4.659 s
-[INFO] Finished at: 2021-09-26T15:18:25-04:00
+[INFO] Finished at: 2022-01-26T15:18:25-04:00
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.12.4:test (default-test) on project RentACat-Cucumber: There are test failures.
 ...
