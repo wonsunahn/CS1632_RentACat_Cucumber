@@ -1,4 +1,5 @@
-package edu.pitt.cs.cs1632;
+package edu.pitt.cs;
+
 public class Config {
 	// Whether to intentionally inject bugs into CoffeeMakerQuest.
 	private static boolean buggyRentACat = false;

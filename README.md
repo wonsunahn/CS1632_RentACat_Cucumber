@@ -1,6 +1,7 @@
 - [CS 1632 - Software Quality Assurance](#cs-1632---software-quality-assurance)
   * [Description](#description)
   * [Prerequisites](#prerequisites)
+  * [The Maven Build System](#the-maven-build-system)
   * [Running Cucumber Tests](#running-cucumber-tests)
     + [Running Cucumber Tests on Eclipse](#running-cucumber-tests-on-eclipse)
     + [Running Cucumber Tests on Commandline](#running-cucumber-tests-on-commandline)
@@ -15,11 +16,11 @@
   * [Resources](#resources)
 
 # CS 1632 - Software Quality Assurance
-Fall Semester 2021 - Supplementary Exercise 2
+Summer Semester 2022 - Supplementary Exercise 1
 
-* DUE: Oct 1 (Friday), 2021 11:59 PM 
+* DUE: July 14 (Thursday), 2022 11:30 AM 
 
-**GitHub Classroom Link:** https://classroom.github.com/g/LXJmMx1O
+**GitHub Classroom Link:** TBD
 
 ## Description
 
@@ -31,55 +32,62 @@ the Cucumber framework to test those behaviors.
 
 ## Prerequisites
 
-I recommend that you do this on the Eclipse IDE since it is the easiest.
+If you are using VSCode as your IDE, I recommend that you install the official Cucumber extension:
+https://marketplace.visualstudio.com/items?itemName=CucumberOpen.cucumber-official
 
-Please install the Cucumber plug-in for Eclipse following these steps (recommended):
-1. Click on Help > Eclipse Marketplace.
-2. Type "cucumber" in the Find search box and press Enter.
-3. Install the "Cucumber Eclipse Plugin" that pops up in the search box.
-4. You will be asked to restart Eclipse to complete installation.  Please do so.
+It is the first extension that pops up when you search for Cucumber on the Extensions menu.  
 
-Otherwise, you can use the command line Maven tool to install Cucumber.
-But for that, you will need to install Maven first using the
-following link (not necessary unless you want to run Cucumber on the command line and not on Eclipse): https://maven.apache.org/download.cgi
+As before, all instructions are going to be based on the Maven commandline tool
+and will be IDE-neutral.  However, an IDE like VSCode may help you read and
+edit Gherkin files through features like syntax highlighting and autocomplete.
+
+If you haven't already, please install the Apache Maven commandline tool:
+https://maven.apache.org/download.cgi
+
+## The Maven Build System
+
+Maven is a build system that simplifies the job of managing library
+dependencies and ensure a uniform development and testing environment among
+project members.  Package dependencies are specified in the project file
+named pom.xml, which describes the Project Object Model in XML format.  In
+the pom.xml file, you can see dependencies to specific versions of
+"cucumber-java", "cucumber-junit", and "junit".  If you want to know more
+about the POM project file, please refer to:
+
+https://maven.apache.org/guides/introduction/introduction-to-the-pom.html
+
+When the Maven project is built, Maven will automatically download the
+specified dependencies (and transitively the dependencies of those
+dependencies) from the Maven Central repository into a local cache.  That way,
+you don't have to scavenge the internet to look for packages.
+
+Maven projects have a standard layout where project implementation sources are
+stored under src/main and project test sources are stored under src/test.  More
+details can be found at:
+
+https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html
 
 ## Running Cucumber Tests
 
-### Running Cucumber Tests on Eclipse
+### Running Cucumber Tests on VSCode
 
-To use the Eclipse Cucumber plug-in, first open the Eclipse project I have made for you:
-1. Click on File > Open Projects from File System.
-2. Click on Directory and browse to the folder where you have cloned your GitHub Classroom repository.
-3. The "Supplement2" folder imported as "Eclipse project" checkbox should be auto-selected.
-4. Click on the Finish button.
+1. Choose "Explorer" from the left hand side vertical menu.
+2. Choose MAVEN > RentACat-Cucumber > Lifecycle > test.
+3. Press the triangular play button next to the test life cycle.
 
-Then, run the Maven test goal:
-1. Right click on the project root "RentACat-Cucumber".
-2. Click on "Run as" in the context menu.
-3. Select "Maven test".
-4. Then the test results should be visible in the bottom Console window.
-
-If you don't want to keep doing the above when running Cucumber tests, you can create a Run Configuration.
-1. Click on Run > Run Configurations.
-2. Select "Maven Build" in the list of run types at the left.
-3. Click on the "New launch configuration" icon at the far left of the toolbar.
-4. Edit the "Name:" box to something like "RentACat Cucumber Test"
-5. Edit the "Base directory" box by clickig on the Workspace button and selecting the RentACat-Cucumber project.
-6. Edit the "Goals:" box by inputing "test"
-7. Click on the Apply button.
-
-Now if you click on the little arrow beside the Run button on the toolbar that
-looks like a play icon, you should see your newly made run configuration.
+That is going to be equivalent to running 'mvn test' on the commandline.
+Alternatively, you can use the "Testing" option from the left vertical menu,
+but I noticed that this doesn't seem to auto-generate Java code snippets for
+missing Gherkin steps like the Maven test life cycle phase does.
 
 ### Running Cucumber Tests on Commandline
 
-If you are not using Eclipse and you wish to run the tests from the command line, use the command line Maven tool.  If you don't have Maven on your machine you need to [download](https://maven.apache.org/download.cgi) it and [install](https://maven.apache.org/install.html) it.  The PATH variable in the installation instructions is the same PATH we modified for setting up JDK 8 in the [Java Assessment Exercise](https://github.com/wonsunahn/CS1632_Fall2021/tree/main/exercises/0#setting-up-jdk-8-for-windows).  Once you make sure Maven works by doing `mvn -v`, do the following:
+You simply have to invoke 'mvn test' on the exercise folder, either through the
+integrated terminal on VSCode ("View > Terminal") or a stand-alone terminal:
 
-1. cd into the folder where you have cloned your GitHub Classroom repository.
-2. Invoke 'mvn test':
-    ```
-    > mvn test
-    ```
+```
+mvn test
+```
 
 ### Expected Outcome
 
@@ -94,10 +102,12 @@ Tests run: 14, Failures: 9, Errors: 1, Skipped: 0
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  4.659 s
-[INFO] Finished at: 2021-09-26T15:18:25-04:00
+[INFO] Total time:  6.192 s
+[INFO] Finished at: 2022-07-11T16:53:57-04:00
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.12.4:test (default-test) on project RentACat-Cucumber: There are test failures.
+[ERROR]
+[ERROR] Please refer to c:\Users\mrabb\Documents\github\cs1632\CS1632_Summer2022\exercises\Supplement1\target\surefire-reports for the individual test results.
 ...
 ```
 
@@ -106,7 +116,7 @@ error in one test.  An error happens when a test is incomplete or is otherwise
 malformed.  In order to get the details about the failures and errors, you can
 read the messages that precede the summary output, or you can also read the
 Cucumber report which is much nicer.  Somewhere above that summary is going to
-be a link to a report in red font that looks like this:
+be a link to a report that looks like this:
 
 ```
 ????????????????????????????????????????????????????????????????????????????
@@ -141,18 +151,11 @@ All the places to modify have been marked by // TODO comments.
 
 ### Updating RentACatImpl.java
 
-Let's first start by completing src/main/java/RentACatImpl.java.  You can just
+Let's first start by completing src/main/java/edu/pitt/cs/RentACatImpl.java.  You can just
 copy the version that you completed for Exercise 2.
 
-You have to make an adjustment to the package name for RentACatImpl.java before
-it will compile.  Put the following line at the top:
-
-```
-package edu.pitt.cs.cs1632;
-```
-
-Just by doing that, many tests will pass now.  Try invoking the Maven testing phase after having copied the
-file and you will get:
+Just by doing that, many tests will pass now.  Try invoking the Maven testing
+phase after having copied the file and you will get:
 
 ```
 > mvn test
@@ -163,7 +166,7 @@ Tests run: 14, Failures: 5, Errors: 1, Skipped: 0
 
 Now we only have **5** failures where as previously we had **9** failures.  In
 fact, all the tests in Feature: Rent-A-Cat listing (in the
-src/test/resources/edu/pitt/cs/cs1632/rent_a_cat_list_cats.feature file) pass.
+src/test/resources/edu/pitt/cs/rent_a_cat_list_cats.feature file) pass.
 
 So why are the rest of the failures and errors happening?  We have rigorously
 tested RentACatImpl using JUnit testing for Exercise 2, so hopefully by now it
@@ -174,12 +177,11 @@ process.
 
 ### Adding Steps in StepDefinitions.java for the "rent cats" Feature
 
-Let's look at the
-src/test/resources/edu/pitt/cs/cs1632/rent_a_cat_rent_cats.feature file to see
-what the problem is.  Well, the Gherkin feature description makes logical
-sense.  So it must be the Cucumber steps that implement the Gherkin steps that
-must be the problem.  All the Cucumber steps are inside the
-src/test/java/edu/pitt/cs/cs1632/StepDefinitions.java file.  In that file, you
+Let's look at the src/test/resources/edu/pitt/cs/rent_a_cat_rent_cats.feature
+file to see what the problem is.  Well, the Gherkin feature description makes
+logical sense.  So it must be the Cucumber steps that implement the Gherkin
+steps that must be the problem.  All the Cucumber steps are inside the
+src/test/java/edu/pitt/cs/StepDefinitions.java file.  In that file, you
 can see all corresponding methods for each Gherkin step.  Some of the methods
 have the // TODO: Implement comment and the default action is to fail().  The
 failing methods are the ones used for the renting feature in Gherkin.  Replace
@@ -287,3 +289,12 @@ https://cucumber.io/docs/cucumber/api/
 
 * Introduction to Behavior Driven Development (BDD):
 https://cucumber.io/docs/bdd/
+
+* Maven CLI tool download:
+https://maven.apache.org/download.cgi
+
+* Introduction to the Maven POM project file:
+https://maven.apache.org/guides/introduction/introduction-to-the-pom.html
+
+* Introduction to the Maven standard directory layout:
+https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html

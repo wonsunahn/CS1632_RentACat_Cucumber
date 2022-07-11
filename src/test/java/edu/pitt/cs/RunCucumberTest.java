@@ -1,4 +1,4 @@
-package edu.pitt.cs.cs1632;
+package edu.pitt.cs;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
