@@ -16,11 +16,11 @@
 - [Resources](#resources)
 
 # CS 1632 - Software Quality Assurance
-Summer Semester 2022 - Supplementary Exercise 1
+Fall Semester 2022 - Supplementary Exercise 1
 
-* DUE: July 14 (Thursday), 2022 11:30 AM 
+* DUE: September 23 (Friday ), 2022 11:59 PM 
 
-**GitHub Classroom Link:** https://classroom.github.com/a/BcohKj_m
+**GitHub Classroom Link:** TBD
 
 ## Description
 
@@ -103,11 +103,11 @@ Tests run: 14, Failures: 9, Errors: 1, Skipped: 0
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  6.192 s
-[INFO] Finished at: 2022-07-11T16:53:57-04:00
+[INFO] Finished at: 2022-09-11T16:53:57-04:00
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.12.4:test (default-test) on project RentACat-Cucumber: There are test failures.
 [ERROR]
-[ERROR] Please refer to c:\Users\mrabb\Documents\github\cs1632\CS1632_Summer2022\exercises\Supplement1\target\surefire-reports for the individual test results.
+[ERROR] Please refer to c:\Users\mrabb\Documents\github\cs1632\CS1632_Fall2022\exercises\Supplement1\target\surefire-reports for the individual test results.
 ...
 ```
 
