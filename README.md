@@ -9,6 +9,7 @@
     + [Updating RentACatImpl.java](#updating-rentacatimpljava)
     + [Adding Steps in StepDefinitions.java for the "rent cats" Feature](#adding-steps-in-stepdefinitionsjava-for-the--rent-cats--feature)
     + [Further Modifying StepDefinitions.java and User Story for the "return cats" Feature](#further-modifying-stepdefinitionsjava-and-user-story-for-the--return-cats--feature)
+  * [Verify Scenarios against RentACatBuggy.java](#verify-scenarios-against-rentacatbuggyjava)
 - [Submission](#submission)
 - [GradeScope Feedback](#gradescope-feedback)
 - [Groupwork Plan](#groupwork-plan)
@@ -218,8 +219,75 @@ Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.983 sec
 ...
 ```
 
-Congratulations!  If you have time, try to complete the other 4 scenarios in
-rent_a_cat_return_cats.feature and see if you can have them pass too!
+Congratulations!  
+
+Now try to complete the other 4 scenarios in rent_a_cat_return_cats.feature and
+see if you can have them pass too!
+
+## Verify Scenarios against RentACatBuggy.java
+
+Just like we did for the JUnit testing exercise, we are going to run our
+scenarios against the buggy implementation of Rent-A-Cat (RentACatBuggy)
+included in the source tree.  
+
+To do so, please add the line Config.setBuggyRentACat(true); to the @Given("a
+rent-a-cat facility") step:
+
+```
+	@Given("a rent-a-cat facility")
+	public void aRentACatFacility() {
+		Config.setBuggyRentACat(true);
+		r = RentACat.createInstance();
+	}
+```
+
+Then run mvn test:
+
+```
+mvn test
+```
+
+If you have faithfully implemented all the scenarios and steps, you should see
+14 failures out of 14 test cases:
+
+```
+...
+Results :
+
+Failed tests:   List available cats with no cats(Rent-A-Cat listing): expected:<[]> but was:<[empty]>
+  List available cats with 1 cat(Rent-A-Cat listing): expected:<ID 1. Jennyanydots[(..)
+  List available cats with 2 cats(Rent-A-Cat listing): expected:<ID 1. Jennyanydots[(..)
+  List available cats with 3 cats(Rent-A-Cat listing): expected:<ID 1. Jennyanydots[(..)
+  Attempt to rent a cat that does not exist(Rent-A-Cat renting)
+  Attempt to rent the same cat twice(Rent-A-Cat renting)
+  Rent the first cat out of the list of cats(Rent-A-Cat renting)
+  Rent the last cat out of the list of cats(Rent-A-Cat renting)
+  Rent a middling cat out of the list of cats(Rent-A-Cat renting)
+  Attempt to return a cat that does not exist(Rent-A-Cat returning)
+  Attempt to return the same cat twice(Rent-A-Cat returning)
+  Rent the first cat and then return the first cat(Rent-A-Cat returning)
+  Rent the last cat and then return the last cat(Rent-A-Cat returning)
+  Rent a middling cat and then return that cat(Rent-A-Cat returning)
+
+Tests run: 14, Failures: 14, Errors: 0, Skipped: 0
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.347 s
+[INFO] Finished at: 2022-09-19T08:38:19-04:00
+[INFO] ------------------------------------------------------------------------
+
+```
+
+Please don't forget to remove Config.setBuggyRentACat(true); before submitting:
+
+```
+	@Given("a rent-a-cat facility")
+	public void aRentACatFacility() {
+		r = RentACat.createInstance();
+	}
+```
 
 # Submission
 
@@ -235,16 +303,15 @@ deductions.
 
 # GradeScope Feedback
 
-The feedback you get from the GradeScope autograder is based on the Cucumber
-summary output.  For example, if you get the following output:
+GradeScope grades your submission in two phases:
 
-```
-...
-Tests run: 14, Failures: 9, Errors: 1, Skipped: 0
-...
-```
+1. RentACatImpl Test (score=number passing)
 
-There were 9 failures and 1 errors so the final score is: 14 - 9 - 1 = 4.
+   In this phase, your Cucumber tests are run against RentACatImpl.  All scenarios (14 in total) are expected to pass.
+
+1. RentACatBuggy Test (score=number failing)
+
+   In this phase, your Cucumber tests are run against RentACatBuggy.  All scenarios (14 in total) are expected to fail.
 
 # Groupwork Plan
 
