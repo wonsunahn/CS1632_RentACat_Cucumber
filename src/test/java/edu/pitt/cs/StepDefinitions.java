@@ -46,13 +46,13 @@ public class StepDefinitions {
 	
 	@Then("the rent is successful")
 	public void theRentIsSuccessful() {
-		// TODO: Implement
+		// TODO: Implement.  The rent is successful if rentCat returns true.
 		fail();
 	}
 
 	@Then("the rent is unsuccessful")
 	public void theRentIsUnsuccessful() {
-		// TODO: Implement
+		// TODO: Implement.  The rent is unsuccessful if rentCat returns false.
 		fail();
 	}
 }
