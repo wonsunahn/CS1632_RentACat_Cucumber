@@ -14,7 +14,7 @@ public class StepDefinitions {
 
 	@Given("a rent-a-cat facility")
 	public void aRentACatFacility() {
-		r = RentACat.createInstance();
+		r = RentACat.createInstance(InstanceType.IMPL);
 	}
 	
 	@Given("no cats")
@@ -24,7 +24,7 @@ public class StepDefinitions {
 	
 	@Given("a cat with ID {int} and name {string}")
 	public void aCatWithIDAndName(Integer id, String name) {
-		r.addCat(new Cat(id, name));
+		r.addCat(Cat.createInstance(InstanceType.IMPL, id, name));
 		System.out.println("Created cat " + id + ". " + name);
 	}
 	
