@@ -6,7 +6,7 @@
     + [Running Cucumber Tests on Commandline](#running-cucumber-tests-on-commandline)
     + [Expected Outcome](#expected-outcome)
   * [What To Do](#what-to-do)
-    + [Updating RentACatImpl.java](#updating-rentacatimpljava)
+    + [Updating Rent-A-Cat Implementation](#updating-rent-a-cat-implementation)
     + [Adding Steps in StepDefinitions.java for the "rent cats" Feature](#adding-steps-in-stepdefinitionsjava-for-the--rent-cats--feature)
     + [Further Modifying StepDefinitions.java and User Story for the "return cats" Feature](#further-modifying-stepdefinitionsjava-and-user-story-for-the--return-cats--feature)
   * [Verify Scenarios against RentACatBuggy.java](#verify-scenarios-against-rentacatbuggyjava)
@@ -16,9 +16,9 @@
 - [Resources](#resources)
 
 # CS 1632 - Software Quality Assurance
-Fall Semester 2023 - Supplementary Exercise 1
+Spring Semester 2024 - Supplementary Exercise 1
 
-* DUE: September 22 (Friday), 2023 11:59 PM 
+* DUE: February 4 (Sunday), 2024 11:59 PM 
 
 **GitHub Classroom Link:** TBD
 
@@ -74,17 +74,16 @@ code is incomplete.  You will get a long list of failures followed by this summa
 
 ```
 ...
-Tests run: 14, Failures: 9, Errors: 1, Skipped: 0
-
+[INFO]
+[ERROR] Tests run: 14, Failures: 9, Errors: 1, Skipped: 0
+[INFO]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  6.192 s
-[INFO] Finished at: 2023-09-10T16:53:57-04:00
+[INFO] Total time:  5.081 s
+[INFO] Finished at: 2024-01-30T01:57:21-05:00
 [INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.12.4:test (default-test) on project RentACat-Cucumber: There are test failures.
-[ERROR]
-[ERROR] Please refer to c:\Users\mrabb\Documents\github\cs1632\CS1632_Fall2023\exercises\Supplement1\target\surefire-reports for the individual test results.
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.1.2:test (default-test) on project RentACat-Cucumber: There are test failures.
 ...
 ```
 
@@ -118,18 +117,20 @@ you can track down the failure.
 
 ## What To Do
 
-You will modify three files: **RentACatImpl.java**, **StepDefinitions.java**,
-and **rent_a_cat_return_cats.feature**.  The RentACatImpl class is the
-(incomplete) implementation of the Rent-A-Cat system.  The StepDefinitions
-class is the (incomplete) implementation of Cucumber steps corresponding to the
-Gherkin steps.  The rent_a_cat_return_cats.feature file is a description of the
-"return cat" feature in the Rent-A-Cat system written in the Gherkin language.
-All the places to modify have been marked by // TODO comments.
+You will modify 4 files: **CatImpl.java**, **RentACatImpl.java**,
+**StepDefinitions.java**, and **rent_a_cat_return_cats.feature**.  The CatImpl
+and RentACatImpl class are the incomplete implementations of Cat and RentACat
+that we saw in Exercise 2.  The StepDefinitions class is the incomplete
+implementation of Cucumber steps corresponding to the Gherkin steps.  The
+rent_a_cat_return_cats.feature file is a description of the "return cat"
+feature in the Rent-A-Cat system written in the Gherkin language.  All the
+places to modify have been marked by // TODO comments.
 
-### Updating RentACatImpl.java
+### Updating Rent-A-Cat Implementation
 
-Let's first start by completing src/main/java/edu/pitt/cs/RentACatImpl.java.  You can just
-copy the version that you completed for Exercise 2.
+Let's first start by completing CatImpl.java and RentACatImpl.java files under
+src/main/java/edu/pitt/cs/.  You can just copy the version that you completed
+for Exercise 2.
 
 Just by doing that, many tests will pass now.  Try invoking the Maven testing
 phase after having copied the file and you will get:
@@ -146,7 +147,7 @@ fact, all the tests in Feature: Rent-A-Cat listing (in the
 src/test/resources/edu/pitt/cs/rent_a_cat_list_cats.feature file) pass.
 
 So why are the rest of the failures and errors happening?  We have rigorously
-tested RentACatImpl using JUnit testing for Exercise 2, so hopefully by now it
+tested Rent-A-Cat using JUnit testing for Exercise 2, so hopefully by now it
 does not contain any defects.  So then, there must be something wrong with the
 Cucumber tests themselves!  Henceforward, we will fix the problems in the
 Cucumber tests one by one and you will be able to learn Cucumber through that
@@ -215,7 +216,15 @@ fix that, you should finally get the following:
 
 ```
 ...
-Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.983 sec
+[INFO]
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.184 s
+[INFO] Finished at: 2024-01-30T02:18:38-05:00
+[INFO] ------------------------------------------------------------------------
 ...
 ```
 
@@ -227,17 +236,22 @@ see if you can have them pass too!
 ## Verify Scenarios against RentACatBuggy.java
 
 Just like we did for the JUnit testing exercise, we are going to run our
-scenarios against the buggy implementation of Rent-A-Cat (RentACatBuggy)
-included in the source tree.  
+scenarios against the buggy implementation of Rent-A-Cat, included as part of
+the rentacat-solution-1.0.0.jar file just like for Exercise 2.
 
-To do so, please add the line Config.setBuggyRentACat(true); to the @Given("a
-rent-a-cat facility") step:
+To do so, please use buggy instances of Cat and RentACat in StepDefinitions.java:
 
 ```
 	@Given("a rent-a-cat facility")
 	public void aRentACatFacility() {
-		Config.setBuggyRentACat(true);
-		r = RentACat.createInstance();
+		r = RentACat.createInstance(InstanceType.IMPL);
+	}
+```
+```
+	@Given("a cat with ID {int} and name {string}")
+	public void aCatWithIDAndName(Integer id, String name) {
+		r.addCat(Cat.createInstance(InstanceType.IMPL, id, name));
+		System.out.println("Created cat " + id + ". " + name);
 	}
 ```
 
@@ -252,42 +266,20 @@ If you have faithfully implemented all the scenarios and steps, you should see
 
 ```
 ...
-Results :
-
-Failed tests:   List available cats with no cats(Rent-A-Cat listing): expected:<[]> but was:<[empty]>
-  List available cats with 1 cat(Rent-A-Cat listing): expected:<ID 1. Jennyanydots[(..)
-  List available cats with 2 cats(Rent-A-Cat listing): expected:<ID 1. Jennyanydots[(..)
-  List available cats with 3 cats(Rent-A-Cat listing): expected:<ID 1. Jennyanydots[(..)
-  Attempt to rent a cat that does not exist(Rent-A-Cat renting)
-  Attempt to rent the same cat twice(Rent-A-Cat renting)
-  Rent the first cat out of the list of cats(Rent-A-Cat renting)
-  Rent the last cat out of the list of cats(Rent-A-Cat renting)
-  Rent a middling cat out of the list of cats(Rent-A-Cat renting)
-  Attempt to return a cat that does not exist(Rent-A-Cat returning)
-  Attempt to return the same cat twice(Rent-A-Cat returning)
-  Rent the first cat and then return the first cat(Rent-A-Cat returning)
-  Rent the last cat and then return the last cat(Rent-A-Cat returning)
-  Rent a middling cat and then return that cat(Rent-A-Cat returning)
-
-Tests run: 14, Failures: 14, Errors: 0, Skipped: 0
-
+[INFO]
+[ERROR] Tests run: 14, Failures: 14, Errors: 0, Skipped: 0
+[INFO]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  6.347 s
-[INFO] Finished at: 2023-09-10T08:38:19-04:00
+[INFO] Total time:  5.182 s
+[INFO] Finished at: 2024-01-30T02:12:18-05:00
 [INFO] ------------------------------------------------------------------------
-
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.1.2:test (default-test) on project RentACat-Cucumber: There are test failures.
+...
 ```
 
-Please don't forget to remove Config.setBuggyRentACat(true); before submitting:
-
-```
-	@Given("a rent-a-cat facility")
-	public void aRentACatFacility() {
-		r = RentACat.createInstance();
-	}
-```
+Please don't forget to revert the buggy instances of Cat and RentACat to impl instances.
 
 # Submission
 
