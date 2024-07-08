@@ -16,11 +16,11 @@
 - [Resources](#resources)
 
 # CS 1632 - Software Quality Assurance
-Spring Semester 2024 - Supplementary Exercise 1
+Summer Semester 2024 - Supplementary Exercise 1
 
-* DUE: February 4 (Sunday), 2024 11:59 PM 
+* DUE: July 11 (Thursday), 2024 8:30 AM 
 
-**GitHub Classroom Link:** https://classroom.github.com/a/McqUzh5f
+**GitHub Classroom Link:** TBD
 
 ## Description
 
@@ -81,7 +81,7 @@ code is incomplete.  You will get a long list of failures followed by this summa
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  5.081 s
-[INFO] Finished at: 2024-01-30T01:57:21-05:00
+[INFO] Finished at: 2024-06-30T01:57:21-05:00
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.1.2:test (default-test) on project RentACat-Cucumber: There are test failures.
 ...
@@ -223,7 +223,7 @@ fix that, you should finally get the following:
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  5.184 s
-[INFO] Finished at: 2024-01-30T02:18:38-05:00
+[INFO] Finished at: 2024-06-30T02:18:38-05:00
 [INFO] ------------------------------------------------------------------------
 ...
 ```
@@ -273,7 +273,7 @@ If you have faithfully implemented all the scenarios and steps, you should see
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  5.182 s
-[INFO] Finished at: 2024-01-30T02:12:18-05:00
+[INFO] Finished at: 2024-06-30T02:12:18-05:00
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.1.2:test (default-test) on project RentACat-Cucumber: There are test failures.
 ...
@@ -283,12 +283,8 @@ Please don't forget to revert the BUGGY instances of Cat and RentACat to IMPL in
 
 # Submission
 
-Each pairwise group will do one submission to GradeScope as usual.  The
-submitting member must use the "View or edit group" link at the top-right
-corner of the assignment page after submission to add his/her partner.  
-
 Submit the repository created by GitHub Classroom for your team to GradeScope
-at the **Supplementary Exercise 2 GitHub** link.  Once you submit, GradeScope
+at the **Supplementary Exercise 1 GitHub** link.  Once you submit, GradeScope
 will run the autograder to grade you and give feedback.  If you get deductions,
 fix your code based on the feedback and resubmit.  Repeat until you don't get
 deductions.
@@ -307,9 +303,9 @@ GradeScope grades your submission in two phases:
 
 # Groupwork Plan
 
-For this exercise, I recommend that you both try to do the full exercise to get
-the full range of experience with Gherkin and Cucumber.  Compare your solutions
-in the end, discuss, and submit!
+Again, each member will be working individually to complete the exercise on
+individual repositories.  As usual for exercises, you are still free to share
+and discuss each other's code.
 
 # Resources
 
