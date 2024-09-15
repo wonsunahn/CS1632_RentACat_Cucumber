@@ -12,13 +12,12 @@
   * [Verify Scenarios against RentACatBuggy.java](#verify-scenarios-against-rentacatbuggyjava)
 - [Submission](#submission)
 - [GradeScope Feedback](#gradescope-feedback)
-- [Groupwork Plan](#groupwork-plan)
 - [Resources](#resources)
 
 # CS 1632 - Software Quality Assurance
-Summer Semester 2024 - Supplementary Exercise 1
+Fall Semester 2024 - Supplementary Exercise 1
 
-* DUE: July 11 (Thursday), 2024 8:30 AM 
+* DUE: September 25 (Wednesday), 2024 before start of class
 
 **GitHub Classroom Link:** TBD
 
@@ -81,7 +80,7 @@ code is incomplete.  You will get a long list of failures followed by this summa
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  5.081 s
-[INFO] Finished at: 2024-06-30T01:57:21-05:00
+[INFO] Finished at: 2024-09-14T01:57:21-05:00
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.1.2:test (default-test) on project RentACat-Cucumber: There are test failures.
 ...
@@ -223,7 +222,7 @@ fix that, you should finally get the following:
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  5.184 s
-[INFO] Finished at: 2024-06-30T02:18:38-05:00
+[INFO] Finished at: 2024-09-14T02:18:38-05:00
 [INFO] ------------------------------------------------------------------------
 ...
 ```
@@ -273,7 +272,7 @@ If you have faithfully implemented all the scenarios and steps, you should see
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  5.182 s
-[INFO] Finished at: 2024-06-30T02:12:18-05:00
+[INFO] Finished at: 2024-09-14T02:12:18-05:00
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.1.2:test (default-test) on project RentACat-Cucumber: There are test failures.
 ...
@@ -292,7 +291,9 @@ deductions.
 If you have insurmountable difficulties that you could not resolve by either
 asking your classmates or your instructor, please complete the reflection
 section in the ReportTemplate.docx file, export it to ReportTemplate.pdf, and
-then submit the file as part of your repository.
+then submit the file as part of your repository.  If you do not write a
+reflection even when you have deductions on the autograder, I can only assume
+that you did not put any effort into it.
 
 # GradeScope Feedback
 
@@ -305,12 +306,6 @@ GradeScope grades your submission in two phases:
 1. RentACatBuggy Test (score=number failing)
 
    In this phase, your Cucumber tests are run against the BUGGY objects.  All scenarios (14 in total) are expected to fail.
-
-# Groupwork Plan
-
-Again, each member will be working individually to complete the exercise on
-individual repositories.  As usual for exercises, you are still free to share
-and discuss each other's code.
 
 # Resources
 
