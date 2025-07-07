@@ -15,9 +15,9 @@
 - [Resources](#resources)
 
 # CS 1632 - Software Quality Assurance
-Spring Semester 2025 - Supplementary Exercise 1
+Summer Semester 2025 - Supplementary Exercise 1
 
-* DUE: February 6 (Thursday), 2025 before start of class
+* DUE: July 10 (Thursday), 2025 before start of class
 
 **GitHub Classroom Link:** TBD
 
@@ -80,7 +80,7 @@ code is incomplete.  You will get a long list of failures followed by this summa
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  5.081 s
-[INFO] Finished at: 2025-01-14T01:57:21-05:00
+[INFO] Finished at: 2025-06-14T01:57:21-05:00
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.1.2:test (default-test) on project RentACat-Cucumber: There are test failures.
 ...
@@ -222,7 +222,7 @@ fix that, you should finally get the following:
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  5.184 s
-[INFO] Finished at: 2025-01-14T02:18:38-05:00
+[INFO] Finished at: 2025-06-14T02:18:38-05:00
 [INFO] ------------------------------------------------------------------------
 ...
 ```
@@ -272,7 +272,7 @@ If you have faithfully implemented all the scenarios and steps, you should see
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  5.182 s
-[INFO] Finished at: 2024-09-14T02:12:18-05:00
+[INFO] Finished at: 2025-06-14T02:12:18-05:00
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.1.2:test (default-test) on project RentACat-Cucumber: There are test failures.
 ...
