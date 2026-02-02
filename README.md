@@ -6,8 +6,8 @@
     + [Running Cucumber Tests on Commandline](#running-cucumber-tests-on-commandline)
     + [Expected Outcome](#expected-outcome)
   * [What To Do](#what-to-do)
-    + [Adding Steps in StepDefinitions.java for the "rent cats" Feature](#adding-steps-in-stepdefinitionsjava-for-the--rent-cats--feature)
-    + [Further Modifying StepDefinitions.java and User Story for the "return cats" Feature](#further-modifying-stepdefinitionsjava-and-user-story-for-the--return-cats--feature)
+    + [Edit StepDefinitions.java for the "list cats and "rent cats" features](#edit-stepdefinitionsjava-for-the-list-cats-and-rent-cats-features)
+    + [Edit StepDefinitions.java and rent\_a\_cat\_return\_cats.feature for the "return cats" feature](#edit-stepdefinitionsjava-and-rent-a-cat-return-catsfeature-for-the-return-cats-feature)
   * [Verify Scenarios against RentACatBuggy.java](#verify-scenarios-against-rentacatbuggyjava)
 - [Submission](#submission)
 - [GradeScope Feedback](#gradescope-feedback)
@@ -132,7 +132,7 @@ Please refer to the Exercise 2 RentACat and Cat interfaces to remind yourself
 of the APIs available to you to implement the StepDefinitions Java Cucumber
 steps.  All the places to modify have been marked by // TODO comments.
 
-### Adding Steps in StepDefinitions.java for the "list cats and "rent cats" Features
+### Edit StepDefinitions.java for the "list cats and "rent cats" features
 
 Read the src/test/resources/edu/pitt/cs/rent\_a\_cat\_list\_cats.feature and
 src/test/resources/edu/pitt/cs/rent\_a\_cat\_rent\_cats.feature files to see if
@@ -155,7 +155,7 @@ Tests run: 14, Failures: 0, Errors: 1, Skipped: 0
 ...
 ```
 
-### Further Modifying StepDefinitions.java and User Story for the "return cats" Feature
+### Edit StepDefinitions.java and rent\_a\_cat\_return\_cats.feature for the "return cats" feature
 
 So where did this error come from?  If you scroll up in the Cucumber output a
 little bit, you will see the following messages:
