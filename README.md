@@ -6,7 +6,6 @@
     + [Running Cucumber Tests on Commandline](#running-cucumber-tests-on-commandline)
     + [Expected Outcome](#expected-outcome)
   * [What To Do](#what-to-do)
-    + [Updating Rent-A-Cat Implementation](#updating-rent-a-cat-implementation)
     + [Adding Steps in StepDefinitions.java for the "rent cats" Feature](#adding-steps-in-stepdefinitionsjava-for-the--rent-cats--feature)
     + [Further Modifying StepDefinitions.java and User Story for the "return cats" Feature](#further-modifying-stepdefinitionsjava-and-user-story-for-the--return-cats--feature)
   * [Verify Scenarios against RentACatBuggy.java](#verify-scenarios-against-rentacatbuggyjava)
@@ -15,9 +14,9 @@
 - [Resources](#resources)
 
 # CS 1632 - Software Quality Assurance
-Fall Semester 2025 - Supplementary Exercise 1
+Spring Semester 2026 - Supplementary Exercise 1
 
-* DUE: September 29 (Monday), 2025 before start of class
+* DUE: February 10 (Tuesday), 2026 before start of class
 
 **GitHub Classroom Link:** TBD
 
@@ -67,9 +66,7 @@ mvn test
 
 ### Expected Outcome
 
-Initially when you run the Cucumber tests, all your tests will fail, partly
-because RentACatImpl is incomplete and partly because your Cucumber testing
-code is incomplete.  You will get a long list of failures followed by this summary text:
+You will get a long list of failures followed by this summary text:
 
 ```
 ...
@@ -80,7 +77,7 @@ code is incomplete.  You will get a long list of failures followed by this summa
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  5.081 s
-[INFO] Finished at: 2025-09-14T01:57:21-05:00
+[INFO] Finished at: 2026-01-14T01:57:21-05:00
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.1.2:test (default-test) on project RentACat-Cucumber: There are test failures.
 ...
@@ -116,55 +113,41 @@ you can track down the failure.
 
 ## What To Do
 
-You will modify 4 files: **CatImpl.java**, **RentACatImpl.java**,
-**StepDefinitions.java**, and **rent_a_cat_return_cats.feature**.  The CatImpl
-and RentACatImpl class are the incomplete implementations of Cat and RentACat
-that we saw in Exercise 2.  The StepDefinitions class is the incomplete
-implementation of Cucumber steps corresponding to the Gherkin steps.  The
-rent_a_cat_return_cats.feature file is a description of the "return cat"
-feature in the Rent-A-Cat system written in the Gherkin language.  All the
-places to modify have been marked by // TODO comments.
+You will be testing the solution version of the Rent-A-Cat system that you
+tested in Exercise 2, included in the project as the
+rentacat-solution-1.0.0.jar file.  Hence you won't need to write a single line
+of implementation code for this exercise.  Instead, you will modify 2 files to
+complete the BDD testing: **StepDefinitions.java**, and
+**rent_a_cat_return_cats.feature**.  
 
-### Updating Rent-A-Cat Implementation
+The StepDefinitions class is an incomplete implementation of Cucumber steps
+corresponding to the Gherkin steps in the three provided feature files.  The
+rent\_a\_cato\_return\_cats.feature file is a description of the "return cat"
+feature in the Rent-A-Cat system written in the Gherkin language, which is also
+incomplete.  The rent\_a\_cat\_list\_cats.feature and the
+rent\_a\_cat\_rent\_cats.feature are already complete and only need completion
+of StepDefinitions.java to work properly.
 
-Let's first start by completing CatImpl.java and RentACatImpl.java files under
-src/main/java/edu/pitt/cs/.  You can just copy the version that you completed
-for Exercise 2.
+Please refer to the Exercise 2 RentACat and Cat interfaces to remind yourself
+of the APIs available to you to implement the StepDefinitions Java Cucumber
+steps.  All the places to modify have been marked by // TODO comments.
 
-Just by doing that, many tests will pass now.  Try invoking the Maven testing
-phase after having copied the file and you will get:
+### Adding Steps in StepDefinitions.java for the "list cats and "rent cats" Features
 
-```
-> mvn test
-...
-Tests run: 14, Failures: 5, Errors: 1, Skipped: 0
-...
-```
-
-Now we only have **5** failures where as previously we had **9** failures.  In
-fact, all the tests in Feature: Rent-A-Cat listing (in the
-src/test/resources/edu/pitt/cs/rent_a_cat_list_cats.feature file) pass.
-
-So why are the rest of the failures and errors happening?  We have rigorously
-tested Rent-A-Cat using JUnit testing for Exercise 2, so hopefully by now it
-does not contain any defects.  So then, there must be something wrong with the
-Cucumber tests themselves!  Henceforward, we will fix the problems in the
-Cucumber tests one by one and you will be able to learn Cucumber through that
-process.
-
-### Adding Steps in StepDefinitions.java for the "rent cats" Feature
-
-Let's look at the src/test/resources/edu/pitt/cs/rent_a_cat_rent_cats.feature
-file to see what the problem is.  Well, the Gherkin feature description makes
-logical sense.  So it must be the Cucumber steps that implement the Gherkin
-steps that must be the problem.  All the Cucumber steps are inside the
-src/test/java/edu/pitt/cs/StepDefinitions.java file.  In that file, you
-can see all corresponding methods for each Gherkin step.  Some of the methods
-have the // TODO: Implement comment and the default action is to fail().  The
-failing methods are the ones used for the renting feature in Gherkin.  Replace
-fail() with the proper implementation of each method.  Observe how other steps
-were implemented to get hints.  After this, if you run Cucumber again, you will
-get:
+Read the src/test/resources/edu/pitt/cs/rent\_a\_cat\_list\_cats.feature and
+src/test/resources/edu/pitt/cs/rent\_a\_cat\_rent\_cats.feature files to see if
+they make sense to you.  It is written in Gherkin so it should be very
+readable.  The Gherkin feature scenarios make logical sense, don't they?  So it
+must be the Cucumber steps that implement the Gherkin steps that must be the
+problem.  All the Cucumber steps are inside the
+src/test/java/edu/pitt/cs/StepDefinitions.java file.  In that file, you can see
+all corresponding methods for each Gherkin step.  Most of the methods have a //
+TODO comment on them and all the @Then steps have fail() assertions.  If you
+look at the failure messages in the Cucumber report, you will notice that all
+the failures are due to these fail() assertions.  Replace fail() with the
+proper assertion to check the postcondition and also fill in the other // TODOs
+for the @Given and @When steps so that the project Java step is taken for each
+Gherkin step.  After this, if you run Cucumber again, you will get:
 
 ```
 ...
@@ -209,8 +192,8 @@ that were undefined as a courtesy.
 
 Once you implement those steps, you may suffer a NullPointerException due to
 the "r" reference being null.  Now why would that happen all of a sudden?
-Hint: compare rent_a_cat_return_cats.feature where the error happened to the
-rent_a_cat_rent_cats.feature, focusing on the "Background:" section.  Once you
+Hint: compare rent\_a\_cat\_return\_cats.feature where the error happened to the
+rent\_a\_cat\_rent\_cats.feature, focusing on the "Background:" section.  Once you
 fix that, you should finally get the following:
 
 ```
@@ -222,14 +205,14 @@ fix that, you should finally get the following:
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  5.184 s
-[INFO] Finished at: 2025-09-14T02:18:38-05:00
+[INFO] Finished at: 2026-01-14T02:18:38-05:00
 [INFO] ------------------------------------------------------------------------
 ...
 ```
 
 Congratulations!  
 
-Now try to complete the other 4 scenarios in rent_a_cat_return_cats.feature and
+Now try to complete the other 4 scenarios in rent\_a\_cat\_return\_cats.feature and
 see if you can have them pass too!
 
 ## Verify Scenarios against RentACatBuggy.java
@@ -272,13 +255,13 @@ If you have faithfully implemented all the scenarios and steps, you should see
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
 [INFO] Total time:  5.182 s
-[INFO] Finished at: 2025-09-14T02:12:18-05:00
+[INFO] Finished at: 2026-01-14T02:12:18-05:00
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.1.2:test (default-test) on project RentACat-Cucumber: There are test failures.
 ...
 ```
 
-Please don't forget to revert the BUGGY instances of Cat and RentACat to IMPL instances.
+Please don't forget to revert the BUGGY instances of Cat and RentACat to SOLUTION instances.
 
 # Submission
 
@@ -286,22 +269,16 @@ Submit the repository created by GitHub Classroom for your team to GradeScope
 at the **Supplementary Exercise 1 GitHub** link.  Once you submit, GradeScope
 will run the autograder to grade you and give feedback.  If you get deductions,
 fix your code based on the feedback and resubmit.  Repeat until you don't get
-deductions.
-
-If you have insurmountable difficulties that you could not resolve by either
-asking your classmates or your instructor, please complete the reflection
-section in the ReportTemplate.docx file, export it to ReportTemplate.pdf, and
-then submit the file as part of your repository.  If you do not write a
-reflection even when you have deductions on the autograder, I can only assume
-that you did not put any effort into it.
+deductions.  Again, if you get deductions, you must have had posted at least
+one question on the exercise channel as a proof of effort to get credit.
 
 # GradeScope Feedback
 
 GradeScope grades your submission in two phases:
 
-1. RentACatImpl Test (score=number passing)
+1. RentACatSolution Test (score=number passing)
 
-   In this phase, your Cucumber tests are run against the IMPL objects.  All scenarios (14 in total) are expected to pass.
+   In this phase, your Cucumber tests are run against the SOLUTION objects.  All scenarios (14 in total) are expected to pass.
 
 1. RentACatBuggy Test (score=number failing)
 
