@@ -14,7 +14,7 @@ public class StepDefinitions {
 
 	@Given("a rent-a-cat facility")
 	public void aRentACatFacility() {
-		r = RentACat.createInstance(InstanceType.IMPL);
+		r = RentACat.createInstance(InstanceType.SOLUTION);
 	}
 	
 	@Given("no cats")
@@ -24,35 +24,40 @@ public class StepDefinitions {
 	
 	@Given("a cat with ID {int} and name {string}")
 	public void aCatWithIDAndName(Integer id, String name) {
-		r.addCat(Cat.createInstance(InstanceType.IMPL, id, name));
-		System.out.println("Created cat " + id + ". " + name);
+		// TODO: Create a SOLUTION cat using Cat.createInstance method and add to r.
 	}
 	
 	@When("I list the cat(s)")
 	public void iListTheCats() {
-		listResult = r.listCats();
+		// TODO: Generate a listing of cats and assign to listResult.
 	}
 	
 	@When("I rent cat number {int}")
 	public void iRentCatNumber(Integer id) {
-		// TODO: Implement
-		fail();
+		// TODO: Rent out the cat with given id.
 	}
 	
 	@Then("the listing is: {string}")
-	public void theListingIs(String result) {
-		assertEquals(result.replaceAll("\\\\n", "\n"), listResult);
+	public void theListingIs(String expectedResult) {
+		// Replace "\n" escape sequence in the expected cat list in Gherkin feature file with actual newline character.
+		expectedResult = expectedResult.replaceAll("\\\\n", "\n");
+
+		// TODO: Replace fail() with a check whether listResult is equal to expectedResult.
+		// The rent is successful if rentCat returned true.
+		fail();
 	}
 	
 	@Then("the rent is successful")
 	public void theRentIsSuccessful() {
-		// TODO: Implement.  The rent is successful if rentCat returns true.
+		// TODO: Replace fail() with a check whether the previous rent step was successful.
+		// The rent is successful if rentCat returned true.
 		fail();
 	}
 
 	@Then("the rent is unsuccessful")
 	public void theRentIsUnsuccessful() {
-		// TODO: Implement.  The rent is unsuccessful if rentCat returns false.
+		// TODO: Replace fail() with a check whether the previous rent step was unsuccessful.
+		// The rent is unsuccessful if rentCat returned false.
 		fail();
 	}
 }
